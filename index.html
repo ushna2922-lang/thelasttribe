@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>TLT - The Last Tribe | Best Restaurant in Islamabad</title>
+    <meta name="description"
+        content="Experience the primal joy of dining at TLT - The Last Tribe in F-11 Islamabad. Authentic flavors, rooftop views, and a tribal atmosphere.">
+    <meta name="keywords"
+        content="TLT, The Last Tribe, Restaurant Islamabad, F-11 Markaz Food, Best Steak Islamabad, Rooftop Dining Islamabad">
+    <meta property="og:title" content="TLT - The Last Tribe - Islamabad">
+    <meta property="og:description" content="Level 5, The Olympus, Markaz, F-11, Islamabad. Book your table now.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+    <meta property="og:url" content="https://thelasttribe.pk">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome & AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #d4a373;
+            /* Earthy Gold */
+            --secondary: #bc6c25;
+            /* Burnt Orange */
+            --dark: #1a1a1a;
+            --light: #fefae0;
+            --white: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 30px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .reserve-btn {
+            background: var(--secondary);
+            padding: 20px 30px;
+            width: 100%;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- PRELOADER --- */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        nav.sticky {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-inline: auto;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .stars {
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+        }
+
+        .map-container {
+            height: 300px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #080808;
+            color: #fff;
+            padding: 100px 10% 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .footer-col h4 {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #888;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+
+        /* --- UTILITIES --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            z-index: 1000;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 35px;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Lightbox for Gallery */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border: 3px solid #fff;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+                padding-top: 50px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .about-wrapper,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .media {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">TLT<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container hero-content">
+            <h1 data-aos="fade-up" data-aos-duration="1000">The Last Tribe</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Rediscover the primal joy of authentic fire-cooked cuisine. A
+                journey of flavors in the heart of Islamabad.</p>
+            <div data-aos="fade-up" data-aos-delay="400" class="media">
+                <a href="#contact" class="btn">Book A Table</a>
+                <a href="#menu" class="btn"
+                    style="background: transparent; border: 2px solid white; margin-left: 10px;">View Menu</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-img" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
+                        alt="About TLT">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <div class="section-title" style="text-align: left;">
+                        <h2>Our Tribal Heritage</h2>
+                    </div>
+                    <p>Located at the prestigious Olympus Mall rooftop in F-11, TLT (The Last Tribe) is more than just a
+                        restaurant; it’s a tribute to ancestral cooking methods. We combine traditional charcoal
+                        grilling with modern culinary finesse.</p>
+                    <br>
+                    <p>Whether it’s our signature slow-cooked meats or our hand-crafted artisan breads, every dish tells
+                        a story of tradition, passion, and the finest ingredients Pakistan has to offer.</p>
+                    <br>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-weight: 600;">
+                        <li><i class="fas fa-check-circle color-primary"></i> Rooftop Ambiance</li>
+                        <li><i class="fas fa-check-circle"></i> Charcoal Grilling</li>
+                        <li><i class="fas fa-check-circle"></i> Live Folk Music</li>
+                        <li><i class="fas fa-check-circle"></i> Private Dining</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>The Tribal Feast</h2>
+                <p>Curated flavors from the wild</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+                        alt="Steak">
+                    <h3>Hunter's Ribeye</h3>
+                    <p>Prime beef aged for 21 days, flame-grilled to perfection.</p>
+                    <span class="price">Rs. 3,450</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="menu-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=500&q=80"
+                        alt="Lamb">
+                    <h3>Tribal Platter</h3>
+                    <p>A mix of Lamb chops, Malai Boti, and Seekh Kebabs.</p>
+                    <span class="price">Rs. 4,800</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="menu-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=500&q=80"
+                        alt="Chicken">
+                    <h3>Smoked Shinwari</h3>
+                    <p>Authentic Peshawari style chicken karahi with a smoky twist.</p>
+                    <span class="price">Rs. 2,100</span>
+                </div>
+                <!-- Item 4 -->
+                <div class="menu-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80"
+                        alt="Pizza">
+                    <h3>Artisan Naan Pizza</h3>
+                    <p>Traditional clay oven base topped with tribal spices.</p>
+                    <span class="price">Rs. 1,650</span>
+                </div>
+                <!-- Item 5 -->
+                <div class="menu-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?auto=format&fit=crop&w=500&q=80"
+                        alt="Burger">
+                    <h3>The Chief Burger</h3>
+                    <p>Double patty wagyu beef with melted smoked cheese.</p>
+                    <span class="price">Rs. 1,850</span>
+                </div>
+                <!-- Item 6 -->
+                <div class="menu-item" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=500&q=80"
+                        alt="Dessert">
+                    <h3>Desert Rose Cake</h3>
+                    <p>Milk cake infused with saffron and pistachios.</p>
+                    <span class="price">Rs. 950</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Inside The Tribe</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80"
+                        alt="Interior"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80"
+                        alt="Dining"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                        alt="Chef"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80"
+                        alt="Dish"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80"
+                        alt="Drink"></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80"
+                        alt="Meat"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" style="background: var(--light);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Word from the Tribe</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"The best rooftop experience in Islamabad. The Shinwari lamb was incredibly tender and the view
+                        of F-11 is unmatched!"</p>
+                    <h4 style="margin-top:20px;">— Ahmed Ali</h4>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Amazing ambiance. It feels like you've stepped into a luxury tribal camp. Highly recommend their
+                        steaks!"</p>
+                    <h4 style="margin-top:20px;">— Sarah Khan</h4>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    <p>"Great service and unique menu items. The Olympus mall location makes it very convenient for
+                        parking and access."</p>
+                    <h4 style="margin-top:20px;">— Usman Sheikh</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Join The Circle</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Contact Details</h3>
+                    <br>
+                    <p><i class="fas fa-map-marker-alt"></i> Level 5, The Olympus, Markaz, F-11, Islamabad</p>
+                    <p><i class="fas fa-phone"></i> 051-8776669</p>
+                    <p><i class="fas fa-envelope"></i> thelasttribe@gmail.com</p>
+                    <br>
+                    <h3>Opening Hours</h3>
+                    <p>Mon - Thu: 12:00 PM - 12:00 AM</p>
+                    <p>Fri - Sun: 12:00 PM - 01:00 AM</p>
+
+                    <div class="map-container">
+                        <!-- Simplified Google Map Embed -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.966324888126!2d72.98270517544078!3d33.69174987329584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbe680f48f435%3A0x600c920f2b2c938c!2sThe%20Olympus%20Mall!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Reserve Your Spot</h3>
+                    <br>
+                    <form id="resForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                        <textarea rows="14" placeholder="Special Requests / Number of Guests"></textarea>
+                        <button type="submit" class="btn reserve-btn">Send Reservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">TLT.</a>
+                <p style="opacity: 0.6; line-height: 1.8;">Authentic, Bold, and Primal. The ultimate dining destination in the capital city.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/kafcoffee_/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/920518776669"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#menu">The Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Menu Items</h4>
+                <ul>
+                    <li>Artisan Naan Pizza</li>
+                    <li>Hunter's Ribeye</li>
+                    <li>Tribal Platter</li>
+                    <li>Smoked Shinwari</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p style="opacity: 0.6;">Level 5, The Olympus, Markaz,<br>F-11, Islamabad</p>
+                <p style="margin-top: 15px; font-weight: 700;">+92 051-8776669</p>
+            </div>
+        </div>
+        <div
+            style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 40px; text-align: center; font-size: 0.85rem; opacity: 0.4;">
+            &copy; 2024 TLT - The Last Tribe. All rights reserved. Designed for Excellence.
+        </div>
+    </footer>
+
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/92518776669" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img src="" id="lightbox-img">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Loader Logic
+        window.addEventListener('load', () => {
+            document.getElementById('loader').style.display = 'none';
+            AOS.init({ duration: 1000, once: true });
+        });
+
+        // 2. Sticky Navbar & Back to Top
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const topBtn = document.getElementById('backToTop');
+
+            if (window.scrollY > 50) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+
+            if (window.scrollY > 500) {
+                topBtn.style.display = 'block';
+            } else {
+                topBtn.style.display = 'none';
+            }
+        });
+
+        // 3. Mobile Menu Toggle
+        function toggleMenu() {
+            const links = document.getElementById('navLinks');
+            links.classList.toggle('active');
+        }
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // 4. Back to top logic
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 5. Lightbox Logic
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = element.querySelector('img').src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        // 6. Form Submission (Simulated)
+        document.getElementById('resForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! Your reservation request has been sent to The Last Tribe. We will contact you shortly.');
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>
